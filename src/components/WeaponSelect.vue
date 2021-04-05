@@ -1,11 +1,15 @@
 <template>
   <div class="hello">
     <div class="weapons">
-      <h1>
-        Select Weapon Type <i class="fas fa-dice" onclick="bravery(0)"></i>
-      </h1>
-
       <row :gutter="12">
+        <column :xs="12" :md="12" :lg="12">
+            <div>
+              <h1>
+                Select Your Weapon Type!
+              </h1>
+            </div>
+        </column>
+
         <column :xs="12" :md="3" :lg="2">
           <div class="weapon">
             <div class="icon"><img src="../assets/axe.png" /></div>

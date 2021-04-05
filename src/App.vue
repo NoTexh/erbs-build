@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img id="symbol" alt="Vue logo" src="./assets/headline.png">
+    <img id="symbol" alt="Vue logo" src="./assets/headline2.png">
     <WeaponSelect/>
   </div>
 </template>
@@ -28,7 +28,8 @@ export default {
 }
 
 #symbol{
-  height: 200px;
-  width: 400px;
+  height: 100px;
+  width: 200px;
+  margin-bottom: 100px;
 }
 </style>

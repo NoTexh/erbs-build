@@ -1,18 +1,13 @@
 <template>
   <div id="app">
-    <img id="symbol" alt="Vue logo" src="./assets/headline2.png">
-    <WeaponSelect/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import WeaponSelect from './components/WeaponSelect.vue'
 
 export default {
-  name: 'App',
-  components: {
-    WeaponSelect
-  }
+  name: 'App'
 }
 </script>
 

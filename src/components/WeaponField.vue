@@ -1,10 +1,12 @@
 <template>
-  <div class="weapon" @click="test()">
-    <div class="icon">
-      <img :src="getPictureForName()" v-bind:alt="name + 'weapon'" />
+  <router-link :to="'/planning/' + imageName">
+    <div class="weapon" @click="test()">
+      <div class="icon">
+        <img :src="getPictureForName()" v-bind:alt="name + 'weapon'" />
+      </div>
+      <div class="name">{{ name }}</div>
     </div>
-    <div class="name">{{ name }}</div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -14,11 +16,8 @@ export default {
     imageName: String,
   },
   methods: {
-    test: function () {
-      alert(this.name);
-    },
     getPictureForName() {
-      return require("../assets/weapontypes/" + this.imageName);
+      return require("../assets/weapontypes/" + this.imageName+ ".png");
     },
   },
 };

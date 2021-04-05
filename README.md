@@ -1,24 +1,18 @@
 # erbs-build
 
-## Project setup
-```
-npm install
-```
+## How to setup Environment
+- Install NodeJs (LTS recommended) -> https://nodejs.org/en/
+- Install VueCLI in CommandLine with ```npm install -g @vue/cli``` 
+- Clone erbs-build Project
+- run ```npm install``` in erbs-build Project
+- You're ready to develop :)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Run the App locally
+- Just run ```npm run serve``` in the Command Line within the Project
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+## Build the App and Deploy
+- To Build the App you need to run ```npm run build```
+- Copy the Files in /dist via WinSCP on the WebServer (Ask for Username/Password)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

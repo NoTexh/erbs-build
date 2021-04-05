@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img id="symbol" alt="Vue logo" src="./assets/headline.png">
+    <WeaponSelect/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import WeaponSelect from './components/WeaponSelect.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    WeaponSelect
   }
 }
 </script>
@@ -23,6 +23,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: #202020;
   margin-top: 60px;
+}
+
+#symbol{
+  height: 200px;
+  width: 400px;
 }
 </style>

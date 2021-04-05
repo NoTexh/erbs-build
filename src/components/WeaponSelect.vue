@@ -3,158 +3,13 @@
     <div class="weapons">
       <row :gutter="12">
         <column :xs="12" :md="12" :lg="12">
-            <div>
-              <h1>
-                Select Your Weapon Type!
-              </h1>
-            </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/axe.png" /></div>
-            <div class="name">Axe</div>
+          <div>
+            <h1>Select Your Weapon Type!</h1>
           </div>
         </column>
 
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/assault_rifle.png" /></div>
-            <div class="name">Assault Rifle</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/bat.png" /></div>
-            <div class="name">Bat</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/bow.png" /></div>
-            <div class="name">Bow</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/crossbow.png" /></div>
-            <div class="name">Crossbow</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/dagger.png" /></div>
-            <div class="name">Dagger</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/dual_swords.png" /></div>
-            <div class="name">Dual Swords (Dagger)</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/dual_swords.png" /></div>
-            <div class="name">Dual Swords (Sword)</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/glove.png" /></div>
-            <div class="name">Gloves</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/guitar.png" /></div>
-            <div class="name">Guitar</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/hammerw.png" /></div>
-            <div class="name">Hammer</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/pistol.png" /></div>
-            <div class="name">Pistol</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/rapierw.png" /></div>
-            <div class="name">Rapier</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/nunchakuw.png" /></div>
-            <div class="name">Nunchaku</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/shuriken.png" /></div>
-            <div class="name">Shuriken</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/sniper_rifle.png" /></div>
-            <div class="name">Sniper Rifle</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/spear.png" /></div>
-            <div class="name">Spear</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/throw.png" /></div>
-            <div class="name">Throw</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/tonfaw.png" /></div>
-            <div class="name">Tonfa</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/two_handed_sword.png" /></div>
-            <div class="name">Two Handed Sword</div>
-          </div>
-        </column>
-
-        <column :xs="12" :md="3" :lg="2">
-          <div class="weapon">
-            <div class="icon"><img src="../assets/whip.png" /></div>
-            <div class="name">Whip</div>
-          </div>
+        <column :xs="12" :md="3" :lg="2" v-for="weapon in this.weapons" :key="weapon.name">
+          <weapon-field :name="weapon.name" :imageName="weapon.imageName" />
         </column>
       </row>
     </div>
@@ -162,6 +17,38 @@
 </template>
 
 <script>
+import WeaponField from "./WeaponField.vue";
+export default {
+  components: { WeaponField },
+  data: () => ({
+    weapons: [
+      { name: "Axe", imageName: "axe.png" },
+      { name: "Assault Rifle", imageName: "assault_rifle.png" },
+      { name: "Bat", imageName: "bat.png" },
+      { name: "Bow", imageName: "bow.png" },
+      { name: "Crossbow", imageName: "crossbow.png" },
+      { name: "Dual Swords", imageName: "dual_swords.png" },
+      { name: "Glove", imageName: "glove.png" },
+      { name: "Guitar", imageName: "guitar.png" },
+      { name: "Hammer", imageName: "hammer.png" },
+      { name: "Pistol", imageName: "pistol.png" },
+      { name: "Rapier", imageName: "rapier.png" },
+      { name: "Nunchaku", imageName: "nunchaku.png" },
+      { name: "Shuriken", imageName: "shuriken.png" },
+      { name: "Sniper Rifle", imageName: "sniper_rifle.png" },
+      { name: "Spear", imageName: "spear.png" },
+      { name: "Throw", imageName: "throw.png" },
+      { name: "Tonfa", imageName: "tonfa.png" },
+      { name: "Two Handed Sword", imageName: "two_handed_sword.png" },
+      { name: "Whip", imageName: "whip.png" },
+    ],
+  }),
+  methods: {
+    test: function (message) {
+      alert(message);
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

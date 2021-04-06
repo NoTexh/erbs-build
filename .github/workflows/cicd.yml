@@ -3,7 +3,7 @@ name: CI
 # Controls when the action will run. 
 on:
   push:
-    branches: [ cicd ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 

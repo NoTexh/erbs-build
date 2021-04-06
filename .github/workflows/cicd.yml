@@ -36,7 +36,7 @@ jobs:
           echo test, and deploy your project.
           
       - name: Build Project
-        run: npm run build
+        run: vue-cli-service build
           
       - name: FTP Deployer
         # You may pin to the exact commit or the version.

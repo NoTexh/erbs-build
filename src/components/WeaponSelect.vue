@@ -19,31 +19,15 @@
 
 <script>
 import WeaponField from "./WeaponField.vue";
+import weapons from "../models/weapons"
+
 export default {
   components: { WeaponField },
-  data: () => ({
-    weapons: [
-      { name: "Axe", imageName: "axe" },
-      { name: "Assault Rifle", imageName: "assault_rifle" },
-      { name: "Bat", imageName: "bat" },
-      { name: "Bow", imageName: "bow" },
-      { name: "Crossbow", imageName: "crossbow" },
-      { name: "Dual Swords", imageName: "dual_swords" },
-      { name: "Glove", imageName: "glove" },
-      { name: "Guitar", imageName: "guitar" },
-      { name: "Hammer", imageName: "hammer" },
-      { name: "Pistol", imageName: "pistol" },
-      { name: "Rapier", imageName: "rapier" },
-      { name: "Nunchaku", imageName: "nunchaku" },
-      { name: "Shuriken", imageName: "shuriken" },
-      { name: "Sniper Rifle", imageName: "sniper_rifle" },
-      { name: "Spear", imageName: "spear" },
-      { name: "Throw", imageName: "throw" },
-      { name: "Tonfa", imageName: "tonfa" },
-      { name: "Two Handed Sword", imageName: "two_handed_sword" },
-      { name: "Whip", imageName: "whip" },
-    ],
-  }),
+ data() {
+    return {
+      weapons,
+    };
+  },
   methods: {
     test: function (message) {
       alert(message);
@@ -58,30 +42,6 @@ export default {
   border-radius: 4px;
   font-family: "Open Sans", sans-serif;
   letter-spacing: 0.5px;
-}
-
-.weapon {
-  background-color: #234744;
-  display: inline-flex;
-  align-items: center;
-  width: 100%;
-  color: white;
-  font-size: 12pt;
-  cursor: pointer;
-  height: 100px;
-}
-
-.icon img {
-  width: 50px;
-  height: 50px;
-  margin-right: 5px;
-  margin-left: 20px;
-  background: black;
-  transform: translateY(2px);
-}
-
-.name {
-  padding-right: 10px;
 }
 
 h1 {

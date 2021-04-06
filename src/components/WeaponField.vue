@@ -1,6 +1,6 @@
 <template>
   <router-link :to="'/planning/' + imageName">
-    <div class="weapon" @click="test()">
+    <div class="weapon">
       <div class="icon">
         <img :src="getPictureForName()" v-bind:alt="name + 'weapon'" />
       </div>
@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     getPictureForName() {
-      return require("../assets/weapontypes/" + this.imageName+ ".png");
+      return require("../assets/weapontypes/" + this.imageName + ".png");
     },
   },
 };
@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 .weapon {
-  background-color: #234744;
+  background: #234744;
   display: inline-flex;
   align-items: center;
   width: 100%;
@@ -33,6 +33,16 @@ export default {
   font-size: 12pt;
   cursor: pointer;
   height: 100px;
+  border-radius: 10px;
+  transition: background-color 0.5s ease;
+}
+
+.weapon:hover {
+  background: #39746f;
+}
+
+a {
+  text-decoration: none;
 }
 
 .icon img {

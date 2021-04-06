@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@master
-      - name: Instal Vue CLI
+      - name: Install Vue CLI
         run: sudo npm install -g @vue/cli
       - name: Install Project Dependencies
         run: npm install
@@ -41,4 +41,4 @@ jobs:
           # The local folder location
           local_folder: dist
           # Remove existing files inside FTP remote folder
-          cleanup: on
+          cleanup: true

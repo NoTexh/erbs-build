@@ -28,9 +28,14 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Start Deploying ER:BS Builder!
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
 
       - name: Install VueJS CLI
-        run: npm install -g @vue/cli
+        run: npm install @vue/cli
 
       - name: Install NPM Dependencies
         run: npm install

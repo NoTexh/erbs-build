@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     getPictureForName() {
-      return require("../assets/weapontypes/" + this.imageName + ".png");
+      return require("../assets/weapontypes/" + this.imageName);
     },
   },
 };

@@ -9,8 +9,8 @@
           </div>
         </column>
 
-        <column :xs="12" :md="3" :lg="2" v-for="weapon in this.weapons" :key="weapon.name">
-          <weapon-field :name="weapon.name" :imageName="weapon.imageName" />
+        <column :xs="12" :md="3" :lg="2" v-for="weaponType in this.weaponTypes" :key="weaponType.displayName">
+          <weapon-field :name="weaponType.displayName" :imageName="weaponType.imageName" />
         </column>
       </row>
     </div>
@@ -19,13 +19,13 @@
 
 <script>
 import WeaponField from "./WeaponField.vue";
-import weapons from "../models/weapons"
+import weaponTypes from "../models/weaponTypes"
 
 export default {
   components: { WeaponField },
  data() {
     return {
-      weapons,
+      weaponTypes,
     };
   },
   methods: {

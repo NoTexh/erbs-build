@@ -10,7 +10,7 @@
         </column>
 
         <column :xs="12" :md="3" :lg="2" v-for="weaponType in this.weaponTypes" :key="weaponType.displayName">
-          <weapon-field :name="weaponType.displayName" :imageName="weaponType.imageName" />
+          <weapon-field :name="weaponType.displayName" :pathName="weaponType.pathName" :imageName="weaponType.imageName" />
         </column>
       </row>
     </div>

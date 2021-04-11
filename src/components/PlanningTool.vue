@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <h1>Test</h1>
-    <h2>{{ $route.params.weaponName }}</h2>
+  <div class="main">
     <div class="item-list">
-      <div class="item" v-for="axe in axes" :key="axe.name">
-        <div class="item-icon" v-bind:class="axe.rarity"><img :src="getPictureForName(axe.icon)" /></div>
-        <div class="name">{{ axe.name }}</div>
+      <div class="item" v-for="weapon in getCorrectWeaponCategory($route.params.weaponName)" :key="weapon.name">
+        <div class="item-icon" v-bind:class="weapon.rarity"><img :src="getPictureForName(weapon.icon)" /></div>
+        <div class="name">{{ weapon.name }}</div>
       </div>
     </div>
 
@@ -42,6 +40,8 @@
 
 <script>
 import axes from "../models/axes";
+import sniper_rifles from "../models/sniper_rifles"
+import assault_rifles from "../models/assault_rifles"
 
 export default {
   data() {
@@ -50,9 +50,16 @@ export default {
     };
   },
   methods: {
-    getPictureForName(url) {
+    getCorrectWeaponCategory(url){
       console.log(url);
-      return require("../assets/axes/"+url);
+      switch(url){
+        case "axe": return axes;
+        case "assault_rifle": return assault_rifles;
+        case "sniper_rifle": return sniper_rifles;
+      }
+    },
+    getPictureForName(imagePath) {
+      return require("../assets/"+imagePath);
     },
   },
   name: "PlanningTool",
@@ -64,6 +71,17 @@ export default {
   border-radius: 4px;
   font-family: "Open Sans", sans-serif;
   letter-spacing: 0.5px;
+}
+
+.main {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1224px;
+  max-width: 1224px;
+  text-align: left;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 .icon img {

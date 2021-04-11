@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="'/planning/' + imageName">
+  <router-link :to="'/planning/' + pathName">
     <div class="weapon">
       <div class="icon">
         <img :src="getPictureForName()" v-bind:alt="name + 'weapon'" />
@@ -13,7 +13,8 @@
 export default {
   props: {
     name: String,
-    imageName: String,
+    pathName: String,
+    imageName: String
   },
   methods: {
     getPictureForName() {

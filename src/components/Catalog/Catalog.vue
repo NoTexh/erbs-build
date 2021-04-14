@@ -6,7 +6,7 @@
 
     <b-container fluid>
 
-      <b-row v-for="location in this.locations" :key="location.name">
+      <b-row v-for="location in this.locationsListe" :key="location.name">
         <LocationField :locationName="location.name" :locationItems="location.items" />
       </b-row>
 
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import locations from "../../models/locations";
+import locationsListe from "../../models/locationsListe";
 import LocationField from './LocationField.vue';
 
 export default {
@@ -26,7 +26,7 @@ export default {
 
   data() {
     return {
-      locations,
+      locationsListe,
     };
   },
 };

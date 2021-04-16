@@ -1,12 +1,21 @@
 <template>
   <div class="main">
     <div class="shop">
-      <div class="shop-weapon shop-item" @click="test('weapon')">Weapon</div>
-      <div class="shop-head shop-item" @click="test('head')">Head</div>
-      <div class="shop-chest shop-item" @click="test('chest')">Chest</div>
-      <div class="shop-arm shop-item" @click="test('arm')">Arm</div>
-      <div class="shop-leg shop-item" @click="test('leg')">Leg</div>
-      <div class="shop-accessory shop-item" @click="test('accessory')">
+      <div class="shop-weapon shop-item" @click="setEquipmentType('weapon')">
+        Weapon
+      </div>
+      <div class="shop-head shop-item" @click="setEquipmentType('head')">
+        Head
+      </div>
+      <div class="shop-chest shop-item" @click="setEquipmentType('chest')">
+        Chest
+      </div>
+      <div class="shop-arm shop-item" @click="setEquipmentType('arm')">Arm</div>
+      <div class="shop-leg shop-item" @click="setEquipmentType('leg')">Leg</div>
+      <div
+        class="shop-accessory shop-item"
+        @click="setEquipmentType('accessory')"
+      >
         Accessory
       </div>
     </div>
@@ -15,6 +24,7 @@
         class="item"
         v-for="items in getCorrectItemCategory(displayedItemListName)"
         :key="items.name"
+        @click="setLoadout(items)"
       >
         <div class="item-icon" v-bind:class="items.rarity">
           <img :src="getPictureForName(items.icon)" />
@@ -22,6 +32,8 @@
         <div class="name">{{ items.name }}</div>
       </div>
     </div>
+
+    <p>{{ this.chosenLoadout }}</p>
   </div>
 </template>
 
@@ -30,21 +42,45 @@ import head from "../models/body/head";
 import axes from "../models/axes";
 import sniper_rifles from "../models/sniper_rifles";
 import assault_rifles from "../models/assault_rifles";
+import Weapon from "../models/Weapon";
+import Armor from "../models/body/Armor";
+import Vue from "vue";
 
 export default {
   data() {
     return {
+      equipmentType: "weapon",
       displayedItemListName: this.$route.params.weaponName,
+      chosenLoadout: [
+        new Weapon(),
+        new Armor(),
+        new Armor(),
+        new Armor(),
+        new Armor(),
+      ],
     };
   },
   methods: {
-    test(item) {
-      if (item !== "weapon") {
-        this.displayedItemListName = item;
+    setLoadout(item) {
+      switch (this.equipmentType) {
+        case "weapon":
+          Vue.set(this.chosenLoadout, 0, item);
+          break;
+        case "head":
+          Vue.set(this.chosenLoadout, 1, item);
+          break;
+      }
+    },
+
+    setEquipmentType(type) {
+      this.equipmentType = type;
+      if (type !== "weapon") {
+        this.displayedItemListName = type;
       } else {
         this.displayedItemListName = this.$route.params.weaponName;
       }
     },
+
     getCorrectItemCategory(displayedItemListName) {
       switch (displayedItemListName) {
         case "axe":

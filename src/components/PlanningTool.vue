@@ -1,65 +1,64 @@
 <template>
   <div class="main">
-    <div class="item-list">
-      <div class="item" v-for="weapon in getCorrectWeaponCategory($route.params.weaponName)" :key="weapon.name">
-        <div class="item-icon" v-bind:class="weapon.rarity"><img :src="getPictureForName(weapon.icon)" /></div>
-        <div class="name">{{ weapon.name }}</div>
+    <div class="shop">
+      <div class="shop-weapon shop-item" @click="test('weapon')">Weapon</div>
+      <div class="shop-head shop-item" @click="test('head')">Head</div>
+      <div class="shop-chest shop-item" @click="test('chest')">Chest</div>
+      <div class="shop-arm shop-item" @click="test('arm')">Arm</div>
+      <div class="shop-leg shop-item" @click="test('leg')">Leg</div>
+      <div class="shop-accessory shop-item" @click="test('accessory')">
+        Accessory
       </div>
     </div>
-
-    <div class="shop">
+    <div class="item-list">
       <div
-        class="shop-weapon shop-item"
-        data-target="weapon"
-        data-label="Weapon"
+        class="item"
+        v-for="items in getCorrectItemCategory(displayedItemListName)"
+        :key="items.name"
       >
-        Weapon
-      </div>
-      <div class="shop-head shop-item" data-target="head" data-label="Head">
-        Head
-      </div>
-      <div data-label="Chest" class="shop-chest shop-item" data-target="chest">
-        Chest
-      </div>
-      <div data-label="Arm" data-target="arm" class="shop-arm shop-item">
-        Arm
-      </div>
-      <div data-target="leg" class="shop-leg shop-item" data-label="Leg">
-        Leg
-      </div>
-      <div
-        data-target="accessory"
-        class="shop-accessory shop-item"
-        data-label="Accessory"
-      >
-        Accessory
+        <div class="item-icon" v-bind:class="items.rarity">
+          <img :src="getPictureForName(items.icon)" />
+        </div>
+        <div class="name">{{ items.name }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import head from "../models/body/head";
 import axes from "../models/axes";
-import sniper_rifles from "../models/sniper_rifles"
-import assault_rifles from "../models/assault_rifles"
+import sniper_rifles from "../models/sniper_rifles";
+import assault_rifles from "../models/assault_rifles";
 
 export default {
   data() {
     return {
-      axes,
+      displayedItemListName: this.$route.params.weaponName,
     };
   },
   methods: {
-    getCorrectWeaponCategory(url){
-      console.log(url);
-      switch(url){
-        case "axe": return axes;
-        case "assault_rifle": return assault_rifles;
-        case "sniper_rifle": return sniper_rifles;
+    test(item) {
+      if (item !== "weapon") {
+        this.displayedItemListName = item;
+      } else {
+        this.displayedItemListName = this.$route.params.weaponName;
+      }
+    },
+    getCorrectItemCategory(displayedItemListName) {
+      switch (displayedItemListName) {
+        case "axe":
+          return axes;
+        case "assault_rifle":
+          return assault_rifles;
+        case "sniper_rifle":
+          return sniper_rifles;
+        case "head":
+          return head;
       }
     },
     getPictureForName(imagePath) {
-      return require("../assets/"+imagePath);
+      return require("../assets/" + imagePath);
     },
   },
   name: "PlanningTool",
@@ -137,6 +136,10 @@ export default {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.hasFocus {
+  border: 2px solid red;
 }
 
 .item-icon.Legendary {
@@ -254,5 +257,4 @@ export default {
     height: 235px !important;
   }
 }
-
 </style>

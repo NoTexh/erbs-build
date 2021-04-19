@@ -1,6 +1,6 @@
 # erbs-build
 
-https://github.com/NoTexh/erbs-build/actions/workflows/cicd.yml/badge.svg
+![example workflow](https://github.com/NoTexh/erbs-build/actions/workflows/cicd.yml/badge.svg)
 
 ## How to setup Environment
 - Install NodeJs (LTS recommended) -> https://nodejs.org/en/

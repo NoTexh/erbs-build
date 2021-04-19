@@ -39,6 +39,11 @@
 
 <script>
 import head from "../models/body/head";
+import chest from "../models/body/chest";
+import arm from "../models/body/arm";
+import leg from "../models/body/leg";
+import accessory from "../models/body/accessory";
+
 import axes from "../models/axes";
 import sniper_rifles from "../models/sniper_rifles";
 import assault_rifles from "../models/assault_rifles";
@@ -57,6 +62,7 @@ export default {
         new Armor(),
         new Armor(),
         new Armor(),
+        new Armor(),
       ],
     };
   },
@@ -68,6 +74,18 @@ export default {
           break;
         case "head":
           Vue.set(this.chosenLoadout, 1, item);
+          break;
+        case "chest":
+          Vue.set(this.chosenLoadout, 2, item);
+          break;
+        case "arm":
+          Vue.set(this.chosenLoadout, 3, item);
+          break;
+        case "leg":
+          Vue.set(this.chosenLoadout, 4, item);
+          break;
+        case "accessory":
+          Vue.set(this.chosenLoadout, 5, item);
           break;
       }
     },
@@ -91,6 +109,14 @@ export default {
           return sniper_rifles;
         case "head":
           return head;
+        case "chest":
+          return chest;
+        case "arm":
+          return arm;
+        case "leg":
+          return leg;
+        case "accessory":
+          return accessory;
       }
     },
     getPictureForName(imagePath) {
